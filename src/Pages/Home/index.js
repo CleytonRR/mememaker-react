@@ -1,27 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Wrapper, Card, Templates, Form, Button } from './styles';
 import logo from '../../images/logo.svg';
 
 export default function Home() {
+  const [templates, setTemplates] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const resp = await fetch('https://api.imgflip.com/get_memes');
+      const {
+        data: { memes },
+      } = await resp.json();
+      setTemplates(memes);
+    })();
+  });
+
   return (
     <Wrapper>
       <img src={logo} alt="MemeMaker" />
       <Card>
         <h2>Selecione um template</h2>
         <Templates>
-          <button type="button">
-            <img src="" alt="Template1" />
-          </button>
-          <button type="button">
-            <img src="" alt="Template1" />
-          </button>
-          <button type="button">
-            <img src="" alt="Template1" />
-          </button>
-          <button type="button">
-            <img src="" alt="Template1" />
-          </button>
+          {templates.map((template) => (
+            <button key={template.id} type="button">
+              <img src={template.url} alt={template.name} />
+            </button>
+          ))}
         </Templates>
 
         <h2>Textos</h2>
