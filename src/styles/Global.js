@@ -8,6 +8,10 @@ export default createGlobalStyle`
         font-family: "Rotobo", sans-serif;
     }
 
+    body {
+        background: #eee;
+    }
+
     button,
     input {
         outline: 0;
