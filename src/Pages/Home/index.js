@@ -5,6 +5,7 @@ import logo from '../../images/logo.svg';
 
 export default function Home() {
   const [templates, setTemplates] = useState([]);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -23,7 +24,12 @@ export default function Home() {
         <h2>Selecione um template</h2>
         <Templates>
           {templates.map((template) => (
-            <button key={template.id} type="button">
+            <button
+              key={template.id}
+              type="button"
+              onClick={() => setSelectedTemplate(template)}
+              className={template.id === selectedTemplate?.id ? 'selected' : ''}
+            >
               <img src={template.url} alt={template.name} />
             </button>
           ))}
