@@ -38,9 +38,14 @@ export default function Home() {
           <>
             <h2>Textos</h2>
             <Form>
-              <input placeholder="Texto #1" />
-              <input placeholder="Texto #1" />
-              <input placeholder="Texto #1" />
+              {new Array(selectedTemplate.box_count)
+                .fill('')
+                .map((_, index) => (
+                  <input
+                    key={String(Math.random())}
+                    placeholder={`Text #${index + 1}`}
+                  />
+                ))}
               <Button type="submit">MakeMyMeme</Button>
             </Form>
           </>
