@@ -6,6 +6,7 @@ import logo from '../../images/logo.svg';
 export default function Home() {
   const [templates, setTemplates] = useState([]);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [boxes, setBoxes] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -16,6 +17,19 @@ export default function Home() {
       setTemplates(memes);
     })();
   });
+
+  // Currying -> Função que retorna outra função
+
+  const handleInputChange = (index) => (e) => {
+    const newValues = boxes;
+    newValues[index] = e.target.value;
+    setBoxes(newValues);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(boxes);
+  }
 
   return (
     <Wrapper>
@@ -37,13 +51,14 @@ export default function Home() {
         {selectedTemplate && (
           <>
             <h2>Textos</h2>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               {new Array(selectedTemplate.box_count)
                 .fill('')
                 .map((_, index) => (
                   <input
                     key={String(Math.random())}
                     placeholder={`Text #${index + 1}`}
+                    onChange={handleInputChange(index)}
                   />
                 ))}
               <Button type="submit">MakeMyMeme</Button>
