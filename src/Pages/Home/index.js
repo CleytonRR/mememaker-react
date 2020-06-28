@@ -34,14 +34,17 @@ export default function Home() {
             </button>
           ))}
         </Templates>
-
-        <h2>Textos</h2>
-        <Form>
-          <input placeholder="Texto #1" />
-          <input placeholder="Texto #1" />
-          <input placeholder="Texto #1" />
-          <Button type="submit">MakeMyMeme</Button>
-        </Form>
+        {selectedTemplate && (
+          <>
+            <h2>Textos</h2>
+            <Form>
+              <input placeholder="Texto #1" />
+              <input placeholder="Texto #1" />
+              <input placeholder="Texto #1" />
+              <Button type="submit">MakeMyMeme</Button>
+            </Form>
+          </>
+        )}
       </Card>
     </Wrapper>
   );
