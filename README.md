@@ -4,7 +4,7 @@
 
 ## About :clipboard:
 
-This project was carried out during [Mateus Silva](https://www.youtube.com/watch?v=Yajip86C8sg) video class. In this project, I was able to review several reaction concepts with styled components.
+This project was carried out during [Mateus Silva](https://www.youtube.com/watch?v=Yajip86C8sg) video class. In this project, I was able to review several **React** concepts with styled components.
 
 ## How to configure :rocket:
 
